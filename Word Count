@@ -1,0 +1,10 @@
+"""
+Given a phrase, count the occurrences of each word in that phrase.
+For example, for the phrase "That's the password: 'PASSWORD 123'!", cried the Special Agent.\nSo I fled.
+"""
+
+from collections import Counter
+import re
+
+def count_words(sentence):
+    return Counter(re.findall(r"[a-z0-9]+(?:'[a-z]+)?", sentence.lower()))
