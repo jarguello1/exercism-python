@@ -1,0 +1,23 @@
+"""
+Determine if a word or phrase is an isogram.
+
+An isogram (also known as a "non-pattern word") is a word or phrase without a repeating letter, however spaces and hyphens are allowed to appear multiple times.
+"""
+
+def is_isogram(string):
+    #Removes punctuation from the string and makes all characters lowercase
+    new_string = string.lower().replace(' ', '').replace('-', '')
+    
+    #word bank for used letters
+    used_letters = []
+    
+    #Adds letters to word bank, if a letter is already in the word bank return False
+    #If loop finishes, there are no repeated letters. return True
+    while len(used_letters) < len(new_string):
+        for x in new_string.lower():
+            if x not in used_letters:
+                used_letters.append(x)
+            elif x in used_letters:
+                return False
+                
+    return True
