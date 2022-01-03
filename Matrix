@@ -1,0 +1,18 @@
+
+class Matrix:
+    def __init__(self, matrix_string):
+        """
+        Inner list turns values into integers
+        Outer list converts string into lists splitting them along \n marker
+        """
+        self.matrix = [[int(x) for x in line.split()] for line in matrix_string.splitlines()]
+        
+
+    def row(self, index):
+        #Matrix list is split by rows, index returns a row
+        return self.matrix[index - 1]
+        
+    def column(self, index):
+        #Matrix list is split by rows, for loop returns the index for each row
+        return [r[index - 1] for r in self.matrix]
+        
