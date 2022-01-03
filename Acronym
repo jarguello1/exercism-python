@@ -1,0 +1,5 @@
+def abbreviate(words):
+    #elimates unwanted punctuation and changes all letters to uppercase
+    phrase = words.replace("-", " ").replace("_", "").upper()
+    #Joins the first letters from each word in the phrase
+    return "".join([x[0] for x in phrase.split()])
