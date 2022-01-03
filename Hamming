@@ -1,0 +1,19 @@
+"""
+Find the difference between two strings, if the length's are unequal raise an error
+GAGCCTACTAACGGGAT
+CATCGTAATGACGGCCT
+^ ^ ^  ^ ^    ^^
+"""
+
+
+def distance(strand_a, strand_b):
+    if len(strand_a) == len(strand_b):
+        """
+        List comprehension adds 1 to the list each time a and b don't equal eachother.
+        zip() combines the two lists into a list of tuples with each tuple being values of the same
+        index from each list.
+        """
+        return sum([a != b for a,b in zip(strand_a, strand_b)])  
+    if len(strand_a) != len(strand_b):
+        #If the length of the two strings isn't equal raise an error saying the lengths must be equal.
+        raise ValueError("Strands must be of equal length.")
