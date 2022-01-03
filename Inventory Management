@@ -1,0 +1,71 @@
+from collections import Counter
+
+def create_inventory(items):
+    """
+
+    :param items: list - list of items to create an inventory from.
+    :return:  dict - the inventory dictionary.
+    """
+
+    inventory = [x for x in items]
+    return Counter(inventory)
+        
+
+
+def add_items(inventory, items):
+    """
+
+    :param inventory: dict - dictionary of existing inventory.
+    :param items: list - list of items to update the inventory with.
+    :return:  dict - the inventory dictionary update with the new items.
+    """
+
+    
+    new_inventory = [x for x in items]
+    for x in new_inventory:
+        if x not in inventory:
+            inventory[x] = 1
+        elif x in inventory:
+            inventory[x] += 1
+    return inventory
+
+
+def decrement_items(inventory, items):
+    """
+
+    :param inventory: dict - inventory dictionary.
+    :param items: list - list of items to decrement from the inventory.
+    :return:  dict - updated inventory dictionary with items decremented.
+    """
+
+    new_inventory = [x for x in items]
+    for x in new_inventory:
+        if x in inventory and inventory[x] != 0:
+            inventory[x] -= 1
+    return inventory
+
+
+def remove_item(inventory, item):
+    """
+    :param inventory: dict - inventory dictionary.
+    :param item: str - item to remove from the inventory.
+    :return:  dict - updated inventory dictionary with item removed.
+    """
+
+    if item in inventory:
+        inventory.pop(item)
+    return inventory
+
+
+def list_inventory(inventory):
+    """
+
+    :param inventory: dict - an inventory dictionary.
+    :return: list of tuples - list of key, value pairs from the inventory dictionary.
+    """
+    new_inventory = []
+    for x in inventory:
+        if inventory[x] > 0:
+            item = (x, inventory[x])
+            new_inventory.append(tuple(item))
+    return new_inventory
